@@ -1,4 +1,4 @@
-
+//PLEASE READ
 /* help taken from :-
 *1)stackoverflow in function win "i was  having trouble checking  'win' it dioganly ,
 * i figgureg it out later but used code from stackoverflow"
@@ -13,7 +13,7 @@
 *\\\\\\\\\\\\ beautification of code done using https://techiedelight.com/tools/java \\\\\\\\\\
 */ 
 
-
+// sometimes there is missallignment in "|" seprating each line so just bear with it
 import java.util.*;
 public class ttt {
     static char[][] board = new char[3][3]; static char cp='X';
