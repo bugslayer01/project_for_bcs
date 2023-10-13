@@ -1,31 +1,37 @@
-import java.util.Scanner;
 
+/* help taken from :-
+*stackoverflow in function win "i was not having trouble checking it dioganly ,
+* i figgureg it out later but used code from stackover flow"
+*/
+
+
+import java.util.*;
 public class ttt {
-    private static char[][] board = new char[3][3];
-    private static char currentPlayer = 'X';
+    static char[][] board = new char[3][3]; static char cp='X';
 
-    public static void main(String[] args) {
-        initializeBoard();
-        printBoard();
+    public static void main(String[] args) 
+    {
+        initializ());
+        print();
 
-        boolean gameWon = false;
+        boolean gw = false;
 
-        while (!gameWon) {
-            int[] move = getPlayerMove();
+        while (!gw) {
+            int[] move = move();
             int row = move[0];
             int col = move[1];
 
-            if (isValidMove(row, col)) {
-                makeMove(row, col);
-                printBoard();
-                gameWon = checkWin(row, col);
-                if (gameWon) {
-                    System.out.println("Player " + currentPlayer + " wins!");
-                } else if (isBoardFull()) {
+            if (movevalid(row, col)) {
+                makemove(row, col);
+                print();
+                gw =checkWin(row, col);
+                if (gw) {
+                    System.out.println("Player "+cp + " wins!");
+                } else if (full()) {
                     System.out.println("It's a draw!");
                     break;
                 } else {
-                    currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+                    cp = (cp == 'X') ? 'O' : 'X';
                 }
             } else {
                 System.out.println("Invalid move. Please try again.");
@@ -33,7 +39,7 @@ public class ttt {
         }
     }
 
-    private static void initializeBoard() {
+    private static void initializ() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 board[i][j] = ' ';
@@ -41,7 +47,7 @@ public class ttt {
         }
     }
 
-    private static void printBoard() {
+    private static void print() {
         System.out.println("  0 1 2");
         for (int i = 0; i < 3; i++) {
             System.out.print(i + " ");
@@ -53,49 +59,49 @@ public class ttt {
             }
             System.out.println();
             if (i < 2) {
-                System.out.println("  -----");
+                System.out.println("************");
             }
         }
     }
 
-    private static int[] getPlayerMove() {
+    private static int[] move() {
         Scanner scanner = new Scanner(System.in);
         int[] move = new int[2];
 
-        System.out.print("Player " + currentPlayer + ", enter your move (row and column): ");
+        System.out.print("Player " + cp + ", enter your move , first enter row and then add coloum");
         move[0] = scanner.nextInt();
         move[1] = scanner.nextInt();
 
         return move;
     }
 
-    private static boolean isValidMove(int row, int col) {
+    private static boolean movevalid(int row, int col) {
         if (row < 0 || row >= 3 || col < 0 || col >= 3) {
             return false;
         }
         return board[row][col] == ' ';
     }
 
-    private static void makeMove(int row, int col) {
-        board[row][col] = currentPlayer;
+    private static void makemove(int row, int col) {
+        board[row][col] = cp;
     }
 
-    private static boolean checkWin(int row, int col) {
+    private static boolean win(int row, int col) {
         // Check row, column, and diagonals for a win manually and there is some error in it 
-        //return (board[row][0] == currentPlayer && board[row][1] == currentPlayer && board[row][2] == currentPlayer)
-          //      || (board[0][col] == currentPlayer && board[0][col] == currentPlayer && board[2][col] == currentPlayer)
-            //    || (row == col && board[0][0] == currentPlayer && board[1][1] == currentPlayer && board[2][2] == currentPlayer)
-            //    || (row + col == 2 && board[0][2] == currentPlayer && board[1][1] == currentPlayer && board[2][0] == currentPlayer);
+        //return (board[row][0] == cp && board[row][1] == cp && board[row][2] == cp)
+          //      || (board[0][col] == cp && board[0][col] == cp && board[2][col] == cp)
+            //    || (row == col && board[0][0] == cp && board[1][1] == cp && board[2][2] == cp)
+            //    || (row + col == 2 && board[0][2] == cp && board[1][1] == cp && board[2][0] == cp);
 
-// code from stackoverflow and w3 schools 
+// code from stackoverflow and w3 schools a.k.a  not my code
         for (int i = 0; i < 3; i++) {
-            if (board[i][0] == currentPlayer && board[i][1] == currentPlayer && board[i][2] == currentPlayer) {
+            if (board[i][0] == cp && board[i][1] == cp && board[i][2] == cp) {
                 return true;
             }
-            if (board[0][i] == currentPlayer && board[1][i] == currentPlayer && board[2][i] == currentPlayer) {
+            if (board[0][i] == cp && board[1][i] == cp && board[2][i] == cp) {
                 return true;    }
 
-    private static boolean isBoardFull() {
+    private static boolean full() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == ' ') {
