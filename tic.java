@@ -17,13 +17,6 @@
 import java.util.*;
 public class ttt {
     static char[][] board = new char[3][3]; static char cp='X';
-    
-    static boolean full() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (board[i][j] == ' ') {
-                    return false;
-                }
 
     public static void main(String[] args) 
     {
@@ -55,7 +48,13 @@ public class ttt {
         }
     }
 
-    
+    static void initializ() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                 board[i][j] = ' ';
+            }
+        }
+    }
 
     static void print() {
         System.out.println("  0    1    2");
@@ -84,13 +83,7 @@ public class ttt {
 
     return move;
     }
-static void initializ() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                 board[i][j] = ' ';
-            }
-        }
-    }
+
     static boolean movevalid(int r, int c) {
         if (r < 0 || r >= 3 || c < 0 || c >= 3) {
             return false;
@@ -102,13 +95,14 @@ static void initializ() {
         board[r][c] = cp;
     }
 
-    static boolean win(int r, int c) {
-        // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\Checking r,c, and diagonal for a win manually and there is some error in it \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    static boolean win(int r, int c) { 
+    
+    //\\\\\\\\\\\\\\\\\\\MY CODE HAVE SOME ERROR\\\\\\\\\\\\\\\\\\\\\\\\\\
+        // Check r,, and diagonals for a win manually and there is some error in it 
         //return (board[r][0] == cp && board[r][1] == cp && board[r][2] == cp)
           //      || (board[0][c] == cp && board[0][c] == cp && board[2][c] == cp)
-            //   || (r == c && board[0][0] == cp && board[1][1] == cp && board[2][2] == cp)
-            //   || (board[0][0]) == board[1][1] && board[0][0]) ==board[2][2]) 
-        //         || (board[0][2]) == board[1][1] && board[0][2]) ==board[2][0]) ;
+            //    || (r == c && board[0][0] == cp && board[1][1] == cp && board[2][2] == cp)
+            //    || (r + c == 2 && board[0][2] == cp && board[1][1] == cp && board[2][0] == cp);
 
                //  below code from stackoverflow and w3 schools a.k.a  not my code
          // Check the current row
@@ -131,9 +125,15 @@ static void initializ() {
         return true;
      }
     
+     // If none of the above conditions are met, there's no win yet.
      return false;
     }
-    
+    static boolean full() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == ' ') {
+                    return false;
+                }
             }
         }
         return true;
