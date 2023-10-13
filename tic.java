@@ -13,7 +13,7 @@
 *\\\\\\\\\\\\ beautification of code done using https://techiedelight.com/tools/java \\\\\\\\\\
 */ 
 
-// sometimes there is missallignment in "|" seprating each line so just bear with it
+// sometimes there is missallignment in "|" seprating each line so jplease bear with it
 import java.util.*;
 public class ttt {
     static char[][] board = new char[3][3]; static char cp='X';
