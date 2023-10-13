@@ -102,10 +102,10 @@ public class ttt {
 
 // code from stackoverflow and w3 schools a.k.a  not my code
         for (int i = 0; i < 3; i++) {
-            if (board[i][0] == cp && board[i][1] == cp && board[i][2] == cp) {
+            if (board[i][0] == cp && board[i][1]==cp &&board[i][2] == cp) {
                 return true;
             }
-            if (board[0][i] == cp && board[1][i] == cp && board[2][i] == cp) {
+            if (board[0][i] == cp && board[1][i]==cp&& board[2][i] == cp) {
                 return true;    }
 
     static boolean full() {
