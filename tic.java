@@ -1,8 +1,8 @@
 
 /* help taken from :-
-*stackoverflow in function win "i was  having trouble checking  'win' it dioganly ,
+*1)stackoverflow in function win "i was  having trouble checking  'win' it dioganly ,
 * i figgureg it out later but used code from stackoverflow"
-* w3 school, way to return a array fron function
+* 2)w3 school, way to return a array fron function
 * 
 *this game was build using 1d array  2D array and function
 *
@@ -10,7 +10,7 @@
 *please ask me about its working
 *
 *
-*\\\\\\\\\\\\beautification of code done using https://techiedelight.com/tools/java \\\\\\\\\\
+*\\\\\\\\\\\\ beautification of code done using https://techiedelight.com/tools/java \\\\\\\\\\
 */ 
 
 
