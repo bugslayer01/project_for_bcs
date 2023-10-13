@@ -20,7 +20,7 @@ public class ttt {
 
     public static void main(String[] args) 
     {
-        initializ());
+        initializ();
         print();
 
         boolean gw = false;
@@ -33,7 +33,7 @@ public class ttt {
             if (movevalid(r,c)) {
                  makemove(r,c);
                 print();
-                 gw =checkWin(r,c);
+                 gw =win(r,c);
                 if (gw) {
                     System.out.println("Player "+cp +" wins");
                 } else if (full()) {
@@ -57,7 +57,7 @@ public class ttt {
     }
 
     static void print() {
-        System.out.println("  0 1 2");
+        System.out.println("  0    1    2");
         for (int i = 0; i < 3; i++) {
             System.out.print(i + " ");
             for (int j = 0; j < 3; j++) {
@@ -102,14 +102,30 @@ public class ttt {
             //    || (r == c && board[0][0] == cp && board[1][1] == cp && board[2][2] == cp)
             //    || (r + c == 2 && board[0][2] == cp && board[1][1] == cp && board[2][0] == cp);
 
-// code from stackoverflow and w3 schools a.k.a  not my code
-        for (int i = 0; i < 3; i++) {
-            if (board[i][0] == cp && board[i][1]==cp &&board[i][2] == cp) {
-                return true;
-            }
-            if (board[0][i] == cp && board[1][i]==cp&& board[2][i] == cp) {
-                return true;    }
+               //  below code from stackoverflow and w3 schools a.k.a  not my code
+         // Check the current row
+      if (board[r][0] == cp && board[r][1] == cp && board[r][2] == cp) {
+        return true;
+     }
 
+      // Check the current column
+       if (board[0][c] == cp && board[1][c] == cp && board[2][c] == cp) {
+        return true;
+       }
+
+       // Check the main diagonal 
+       if (r == c && board[0][0] == cp && board[1][1] == cp && board[2][2] == cp) {
+        return true;
+         }
+
+        // Check the secondary diagonal (top-right to bottom-left)
+      if (r + c == 2 && board[0][2] == cp && board[1][1] == cp && board[2][0] == cp) {
+        return true;
+     }
+    
+     // If none of the above conditions are met, there's no win yet.
+     return false;
+    }
     static boolean full() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
